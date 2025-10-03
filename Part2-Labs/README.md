@@ -1,5 +1,5 @@
 
-# VSDBabySoC
+# Week 2 Task – BabySoC Fundamentals & Functional Modelling
 
 The **VSDBabySoC** is a small yet powerful RISC-V based SoC.
 
@@ -9,7 +9,7 @@ It contains:
 * An **8x-PLL** to generate a stable clock
 * A **10-bit DAC** to communicate with analog devices
 
-![vsdbabysoc\_block\_diagram](images/vsdbabysoc_block_diagram.png)
+![vsdbabysoc](Screenshots/vsdbabysoc.png)
 
 ---
 
@@ -126,12 +126,14 @@ This generates output at `output/pre_synth_sim/pre_synth_sim.vcd`.
 ```bash
 gtkwave output/pre_synth_sim/pre_synth_sim.vcd
 ```
-
+![pre_synth_sim](Screenshots/pre_synth_sim.png)
 ---
 
 # Run Post-Synthesis Simulation
 
 Synthesize the generated RTL code and after that we can simulate the result.The post and pre (modeling section) synthesis results should be identical.
+
+![post_synth_sim](Screenshots/post_synth_sim.png)
 
 In this picture we can see the following signals:
 
@@ -284,13 +286,11 @@ Inst #7: x17 = x17 + x11   // add the final x11 = 43
 ```
 
 So the total `x17` after the summation sequence is:
-[
-x17 = \sum_{i=0}^{42} i ;+; 43
-= \left(\sum_{i=1}^{42} i\right) + 43
-= \frac{42 \times 43}{2} + 43
-= 903 + 43 = 946
-]
 
+```
+x17 = 1+2+3+ ..... + 42 = 903
+x17 = 903 + 43 = 946
+```
 **Decimal:** `946`
 **Hex:** `946_{10} = 0x3B2`
 **Binary (10 bits):** `0b1110110010`
@@ -326,14 +326,12 @@ Inst #11: x17 = x17 - x11 // subtract the final x11 (which is 1)
 ```
 
 Total subtractions:
-[
-\text{sum of subtractions} = \sum_{k=2}^{43} k ;+; 1 = \left(\sum_{k=1}^{43} k - 1\right) + 1 = \sum_{k=1}^{43} k = 946
-]
+```
+x17 = 946 - 43- 42 -41 - .... -2 = 1
+x17 = 1 - 1 = 0
+```
 
-So after the countdown:
-[
-x17 = 946 - 946 = 0
-]
+So after the countdown: x17 = 946 - 946 = 0
 
 Thus the program restores `x17` back to `0`.
 
@@ -341,7 +339,7 @@ Thus the program restores `x17` back to `0`.
 
 ### Final instruction
 
-* `Inst #12: BEQ x0, x0, <imm>` — this is an unconditional branch to repeat again.
+* `Inst #12: BEQ x0, x0, <imm>` — this is an unconditional branch statement to repeat program again.
 
 ---
 
@@ -350,11 +348,15 @@ Thus the program restores `x17` back to `0`.
 If you feed the 10-bit `OUT` to a DAC with `VREF = 1.0 V` and standard scaling `Vout = Code / (2^N - 1) * VREF`:
 
 * `Code = 946`, `N = 10`, `2^N - 1 = 1023`.
-  [
-  V_{out} = \frac{946}{1023}\times1.0;\text{V} = 0.9247311827956989;\text{V}
-  ]
+```
+  Vout = (1.0) * 946/1023 = 0.9247311827956989
+```
 
-So **precise Vout ≈ 0.9247311828 V** when `OUT = 0x3B2`.
+So **Vout ≈ 0.9247311828 V** when `OUT = 0x3B2`.
+
+To verify with simulation, lets zoom into the waveform to find the highest value output from the DAC.OUT
+
+![DAC_OUT](Screenshots/dac_out_check.png)
 
 ---
 
