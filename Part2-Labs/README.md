@@ -136,7 +136,7 @@ Synthesize the generated RTL code and after that we can simulate the result.The 
 
 **SIMULATION**
 
-![post_synth_simlog1](Screenshots/post_synth_simlog1.png)
+![post_synth_simlog1](Screenshots/post_synth_sim1.png)
 ![post_synth_simlog2](Screenshots/post_synth_simlog2.png)
 ![synthesis_results](Screenshots/synthesis_results.png)
 
