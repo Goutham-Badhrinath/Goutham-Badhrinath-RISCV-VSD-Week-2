@@ -6,7 +6,7 @@ The **VSDBabySoC** is a small yet powerful RISC-V based SoC.
 It contains:
 
 * One **RVMYTH** microprocessor (**RISCV-based processor**)
-* An **8x-PLL** to generate a stable clock
+* An **PLL** to generate a stable clock
 * A **10-bit DAC** to communicate with analog devices
 
 ![vsdbabysoc](Screenshots/vsdbabysoc.png)
@@ -118,6 +118,7 @@ git clone https://github.com/manili/VSDBabySoC.git
 cd VSDBabySoC
 make pre_synth_sim
 ```
+![pre_synth_simlog](Screenshots/pre_synth_simlog.png)
 
 This generates output at `output/pre_synth_sim/pre_synth_sim.vcd`.
 
@@ -129,9 +130,17 @@ gtkwave output/pre_synth_sim/pre_synth_sim.vcd
 ![pre_synth_sim](Screenshots/pre_synth_sim.png)
 ---
 
-# Run Post-Synthesis Simulation
+# Run Post-Synthesis Simulation and Waveforms
 
 Synthesize the generated RTL code and after that we can simulate the result.The post and pre (modeling section) synthesis results should be identical.
+
+**SIMULATION**
+
+![post_synth_simlog1](Screenshots/post_synth_simlog1.png)
+![post_synth_simlog2](Screenshots/post_synth_simlog2.png)
+![synthesis_results](Screenshots/synthesis_results.png)
+
+**WAVEFORMS**
 
 ![post_synth_sim](Screenshots/post_synth_sim.png)
 
