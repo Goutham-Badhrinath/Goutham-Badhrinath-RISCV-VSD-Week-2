@@ -114,9 +114,11 @@ Some widely recognized SoCs that power today’s devices:
   Converts digital values into analog outputs, enabling BabySoC to interact with devices like speakers and displays.
   Few Types of DAC:
   - **Weighted Binary Resistor DAC**
+  
   ![DAC](Screenshots/Weighted_Resistor_DAC.png)
   
   - **R-2R Resistor DAC**
+  
   ![DAC](Screenshots/R-2R.png) 
 
 This minimal yet functional integration makes BabySoC a stepping stone to understanding more advanced SoCs. The working and design aspects of BabySoC is present in the Part2-Labs README.md file.It contains the basic block diagram along with execution of the program present in the RISCV-Core and DAC along with the calculations.
